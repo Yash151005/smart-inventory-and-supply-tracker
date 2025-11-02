@@ -78,11 +78,11 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`
 ╔════════════════════════════════════════════════════════════╗
-║   Smart Inventory & Supply Tracker MVP                    ║
-║   Server running on http://localhost:${PORT}                 ║
-║   Environment: ${process.env.NODE_ENV || 'development'}                              ║
-║   Database: SQLite (Local)                                ║
-║   Ready for Azure Cloud Migration                         ║
+║   Smart Inventory & Supply Tracker MVP                     ║
+║   Server running on http://localhost:${PORT}               ║
+║   Environment: ${process.env.NODE_ENV || 'development'}    ║
+║   Database: SQLite (Local)                                 ║
+║   Ready for Azure Cloud Migration                          ║
 ╚════════════════════════════════════════════════════════════╝
   `);
 });
