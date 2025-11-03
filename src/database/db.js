@@ -4,26 +4,22 @@ const fs = require('fs');
 
 class Database {
   constructor() {
-    // Use Azure writable path or fallback to local ./data folder
-    const homeDir = process.env.HOME || __dirname; // Azure HOME or local
-    const dbDir = path.join(homeDir, 'data');
-
-    // Ensure directory exists
-    if (!fs.existsSync(dbDir)) {
-      fs.mkdirSync(dbDir, { recursive: true });
-    }
-
-    const dbPath = path.join(dbDir, 'inventory.db');
-    console.log('Using database path:', dbPath);
-
+    // Use Azure App Service writable path
+    const dataDir = process.env.DB_PATH || path.join(process.env.HOME || __dirname, 'data');
+    
+    // Ensure the directory exists
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+    
+    const dbPath = path.join(dataDir, 'inventory.db');
     this.db = new sqlite3.Database(dbPath, (err) => {
       if (err) {
         console.error('Error opening database:', err.message);
       } else {
-        console.log('Connected to SQLite database');
+        console.log('Connected to SQLite database at', dbPath);
       }
     });
   }
+
 
   initialize() {
     return new Promise((resolve, reject) => {
