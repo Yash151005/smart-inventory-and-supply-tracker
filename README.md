@@ -87,6 +87,32 @@ Built with modularity in mind, this MVP simulates Azure cloud components locally
 
 ---
 
+## ▶️ Run the Azure Function locally
+
+This repo keeps Functions code under `backend/`. If you run `func start` from the repo root you’ll see errors like "Worker was unable to load entry point \"server.js\"". Use the script below instead:
+
+```powershell
+# From the project root
+npm run start:functions
+```
+
+This starts Azure Functions Core Tools with `--script-root backend`, so your function `InventoryAPI` is available at:
+
+```
+http://localhost:7071/api/InventoryAPI
+```
+
+If you prefer doing it manually:
+
+```powershell
+cd backend
+func start
+```
+
+Tip: If you also have a `host.json` at the repo root, always start Functions from `backend/` (or use the npm script) to avoid confusing Core Tools.
+
+---
+
 ## 📁 Project Structure
 
 ```

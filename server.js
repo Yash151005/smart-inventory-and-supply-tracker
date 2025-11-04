@@ -74,8 +74,8 @@ app.use((req, res) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
+// Start server (store server instance so we can close it on SIGTERM)
+const server = app.listen(PORT, () => {
   console.log(`
 ╔════════════════════════════════════════════════════════════╗
 ║   Smart Inventory & Supply Tracker MVP                     ║
