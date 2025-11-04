@@ -1,5 +1,9 @@
 // API Base URL
-const API_BASE_URL = 'http://localhost:3000/api';
+// In Azure: if frontend and backend are hosted under the same App Service, use the relative path '/api'.
+// If you want to call the Function App directly, replace with the Function URL, e.g.:
+// const API_BASE_URL = 'https://func-smartinv-<uniq>.azurewebsites.net/api';
+const API_BASE_URL = '/api';
+
 
 // State management
 let currentEditId = null;
